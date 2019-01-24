@@ -354,7 +354,7 @@
 		canales[40]={nombre:'TNT Series',       src:'img/TNTSERIES.jpg',    fuente1:'TNT_SERIES_HD',         opcion1:1, fuente2:'2591', opcion2:1}
 		canales[41]={nombre:'Universal Channel',src:'img/UNIVERSAL.png',    fuente1:'UNIVERSAL_CHANNEL_HD',  opcion1:1, fuente2:'2759', opcion2:1}
 		canales[42]={nombre:'Warner Channel',   src:'img/WARNER.png',       fuente1:'WARNER_HD',             opcion1:1, fuente2:'2583', opcion2:1}
-		canales[43]={nombre:'Classiques',       src:'icon/foxclassics.png', fuente1:'http://45.43.208.2:1935/classique/classique/live.m3u8', opcion1:1, fuente2:'', opcion2:1}
+		canales[43]={nombre:'Classiques',       src:'img/CLASSIQUES.jpg',   fuente1:'http://45.43.208.2:1935/classique/classique/live.m3u8', opcion1:1, fuente2:'', opcion2:1}
 		canales[44]={nombre:'Pelicula',         src:'img/CINE.png',         fuente1:'http://www.youtube.com/embed/XT3voFvVEcI',         opcion1:1, fuente2:'', opcion2:1}
 		canales[45]={nombre:'A&amp;E',          src:'img/AE.png',           fuente1:'AE_MUNDO_HD',           opcion1:1, fuente2:'2620', opcion2:1}
 		canales[46]={nombre:'Animal Planet',    src:'img/ANIMALPLANET.png', fuente1:'ANIMAL_PLANET_HD',      opcion1:1, fuente2:'2739', opcion2:1}
