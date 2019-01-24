@@ -792,7 +792,7 @@
 				<h1 id="laspect" style="position:relative; padding:0px; opacity: 0.5; cursor: pointer; color:white; font-family: 'Audiowide'; font-size: 50px; " >0</h1>
 			</div>
 
-			<input class="imagen" type="image" style="" src="salzuela.png" onclick="alterna_modo_de_pantalla()">
+			<input class="imagen" type="image" style="" src="img/salzuela.png" onclick="alterna_modo_de_pantalla()">
 		</div>
 
 
