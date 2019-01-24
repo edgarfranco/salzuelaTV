@@ -756,7 +756,7 @@
 <body onmousemove="onmove()" onload="init()" background="LogoSalzuelaBlogV3.png" style="cursor: none;"> 
 
 	<div id="divLoad" style="visibility: hidden; position: absolute; z-index: initial; top: 45%; margin-left: auto; margin-right: auto; left: 0px; right: 0px;">
-		<img src="loading3.gif" width="50px" height="50px" style="position: absolute; margin-left:auto; margin-right:auto; left:0; right:0; ">
+		<img src="img/loading3.gif" width="50px" height="50px" style="position: absolute; margin-left:auto; margin-right:auto; left:0; right:0; ">
 		<p id="lCanal" class="texto" style="margin-top:60; text-align: center;">Cargando Canales...</p>
 	</div>
 
