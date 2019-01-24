@@ -116,7 +116,7 @@
 
 		.estado{
 			background-color: #2187bb;
-			opacity: 0.8;
+			opacity: 0.7;
 			cursor: pointer;
 			box-shadow: 0px 0px 20px 5px #000 inset;
 			border-radius: 10px;			
