@@ -9,7 +9,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 	<meta http-equiv="Pragma" content="no-cache">
 
-	<link rel="shortcut icon" href="salzuela.ico">
+	<link rel="shortcut icon" href="img/salzuela.ico">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -36,7 +36,7 @@
 		
 		BODY {
 			background-color: black;
-			background-image: url("salzuela2.png"), url("fondo2_1280.jpg") ; 
+			background-image: url("img/salzuela2.png"), url("img/fondo2_1280.jpg") ; 
 			background-size: 10% , 100%; 
 			background-position: center , center;
 			background-repeat: no-repeat , repeat-y;
