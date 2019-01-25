@@ -9,7 +9,7 @@
 	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 	<meta http-equiv="Pragma" content="no-cache">
 
-	<link rel="shortcut icon" href="img/salzuela.ico">
+	<link rel="shortcut icon" href="salzuela.ico">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -36,10 +36,14 @@
 		
 		BODY {
 			background-color: black;
-			background-image: url("img/salzuela2.png"), url("img/fondo2_1280.jpg") ; 
-			background-size: 10% , 100%; 
-			background-position: center , center;
-			background-repeat: no-repeat , repeat-y;
+//			background-image: url("img/salzuela2.png"), url("img/fondo2_1280.jpg") ; 
+//			background-size: 10% , 100%; 
+//			background-position: center , center;
+//			background-repeat: no-repeat , repeat-y;
+			background-image: url("img/salzuela2.png"); 
+			background-size: 10%;
+			background-position: center;
+			background-repeat: no-repeat;
 			color: #2187bb ; 
 			color: white ; 
 		}
@@ -87,6 +91,10 @@
 			opacity: 1;
 		}
 
+		.imagenEstado{
+			width: 50px;
+		}
+		
 		.imagenTV {
 			width: 118px;
 			height: 118px;
@@ -115,13 +123,23 @@
 		}
 
 		.estado{
-			background-color: #2187bb;
+			position: fixed;
+			bottom:0;
+			width:100%;
+			height:50px;
+			background-color: #000000;
 			opacity: 0.7;
 			cursor: pointer;
-			box-shadow: 0px 0px 20px 5px #000 inset;
-			border-radius: 10px;			
+			//box-shadow: 0px 15px 20px 5px #000000 inset;
+			box-shadow: 0px 10px 25px 5px #000000 inset;
+			border-radius: 10px;
 		}
 		
+		.control{
+			bottom:50;
+			height:80px;
+		}
+
 		.falla {
 			width: 90px;
 			height: 90px;
@@ -139,6 +157,9 @@
 			font-family: 'Audiowide';
 			font-size: 30px;
 			opacity: 1;
+			padding:0;
+			margin-bottom:0;
+			bottom:0;
 		}
 		.texto:hover {
 			opacity: 1;
@@ -753,10 +774,10 @@
 	</script> 
 </head>
 
-<body onmousemove="onmove()" onload="init()" background="LogoSalzuelaBlogV3.png" style="cursor: none;"> 
+<body onmousemove="onmove()" onload="init()" background="LogoSalzuelaBlogV3.png" style="cursor: none;" > 
 
 	<div id="divLoad" style="visibility: hidden; position: absolute; z-index: initial; top: 45%; margin-left: auto; margin-right: auto; left: 0px; right: 0px;">
-		<img src="img/loading3.gif" width="50px" height="50px" style="position: absolute; margin-left:auto; margin-right:auto; left:0; right:0; ">
+		<img src="loading3.gif" width="50px" height="50px" style="position: absolute; margin-left:auto; margin-right:auto; left:0; right:0; ">
 		<p id="lCanal" class="texto" style="margin-top:60; text-align: center;">Cargando Canales...</p>
 	</div>
 
@@ -781,7 +802,9 @@
 		</div>
 		
 		<hr class="linea">
-		<div id="divControl" align="center" >
+<br><br><br><br><br>
+
+		<div id="divControl" align="center" class="estado control">
 			<div class="imagen" onclick="stop()" id="pStop" style="background-image: url('img/stop3D.png');"></div>		
 			<div class="imagen" onclick="sube()" style="background-image: url('img/arriba3D.png');"></div>
 			<div class="imagen" onclick="baja()" style="background-image: url('img/abajo3D.png');"></div>
@@ -797,7 +820,7 @@
 
 		<div id="divEstado" class="estado">
 			<div id="token" class="texto" style="display:inline-block; margin-left:20px"></div>
-			<div id="canal" class="texto" style="display:inline-block; width:20px; margin-left:20px" align="center"></div>
+			<div id="canal" class="texto" style="display:inline-block; width:60%; margin-left:20px" align="center"></div>
 			<div id="reloj" class="texto" style="display:inline-block; margin-left:15px"></div>
 		</div>		
 
