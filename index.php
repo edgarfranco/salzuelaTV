@@ -92,12 +92,13 @@
 		}
 
 		.imagenEstado{
-			width: 50px;
+			width: 60px;
+			height: 60px;
 		}
 		
 		.imagenTV {
-			width: 118px;
-			height: 118px;
+			width: 94px;
+			height: 94px;
 			opacity: 0.4;
 			cursor: pointer;
 			box-shadow: 0px 0px 15px 0px #000 inset;
@@ -131,13 +132,14 @@
 			opacity: 0.7;
 			cursor: pointer;
 			//box-shadow: 0px 15px 20px 5px #000000 inset;
-			box-shadow: 0px 10px 25px 5px #000000 inset;
+			//box-shadow: 0px 10px 25px 15px #000000;
 			border-radius: 10px;
 		}
 		
 		.control{
-			bottom:50;
-			height:80px;
+			bottom:50px;
+			height:50px;
+			box-shadow: 0px -10px 15px 5px #000000;
 		}
 
 		.falla {
@@ -286,7 +288,7 @@
 		var v="none"
 		function menu(v){
 			console.log("menu(" + v + ")")
-//v="visible"	
+//v="visible"
 			switch(v) {
 				case "hidden":
 					document.body.style.cursor = "none";
@@ -425,7 +427,6 @@
 				if(i===56){document.getElementById("divCanales").innerHTML += "<hr class='linea'>"}
 				if(i===65){document.getElementById("divCanales").innerHTML += "<hr class='linea'>"}
 			}			
-			
 		}
 		
 		function play(id) {
@@ -608,8 +609,9 @@
 		}
 
 		function stop(){
-			document.getElementById("video1").src=""
-			document.getElementById("iVideo2").src=""
+			console.log("stop")
+			document.getElementById("video1").src=null
+			document.getElementById("iVideo2").src=null
 			
 			if(canal!=0) {
 				if(document.getElementById("pStop").src=="http://tv.salzuela.tk/img/stop3D.png") {
@@ -794,34 +796,34 @@
 	<div id="divMain" class="divinvisible" style="text-align: left; background-color: rgba(0, 0, 0, 0.2); overflow-y: scroll; position: absolute; z-index: 2; top: 0px; left: 0px; right: 0px; bottom: 0px; visibility: hidden;" onclick="menu('hidden')">
 		<br>
 		<h1 id="hFuente" class="texto" style="margin-bottom:0; margin-top:0; text-align:center; display:inline-block;" onclick="fuenteTV()">
-			 Fuente Preferida: 1
+			Fuente Preferida: 1
 		</h1>
 		<hr class="linea">
 		
 		<div id="divCanales" style="display:inline-block; margin-left:15px;">
 		</div>
 		
-		<hr class="linea">
-<br><br><br><br><br>
+		
+<br><br><br><br>
 
-		<div id="divControl" align="center" class="estado control">
-			<div class="imagen" onclick="stop()" id="pStop" style="background-image: url('img/stop3D.png');"></div>		
-			<div class="imagen" onclick="sube()" style="background-image: url('img/arriba3D.png');"></div>
-			<div class="imagen" onclick="baja()" style="background-image: url('img/abajo3D.png');"></div>
-			<div class="imagen" onclick="jump()" style="background-image: url('img/jump3D.png');"></div>
-			<div class="imagen" onclick="update()" style="background-image: url('img/update3D.png');"></div>			
+		<div id="divControl" align="center" class="estado control">		
+			<div class="imagen imagenEstado" onclick="stop()" id="pStop" style="background-image: url('img/stop3D.png');"></div>		
+			<div class="imagen imagenEstado" onclick="sube()" style="background-image: url('img/arriba3D.png');"></div>
+			<div class="imagen imagenEstado" onclick="baja()" style="background-image: url('img/abajo3D.png');"></div>
+			<div class="imagen imagenEstado" onclick="jump()" style="background-image: url('img/jump3D.png');"></div>
+			<div class="imagen imagenEstado" onclick="update()" style="background-image: url('img/update3D.png');"></div>			
 			
-			<div class="imagen" onclick="aspect()" style="background-image: url('img/aspect3D.png');" align="center">
-				<h1 id="laspect" style="position:relative; padding:0px; opacity: 0.5; cursor: pointer; color:white; font-family: 'Audiowide'; font-size: 50px; " >0</h1>
+			<div class="imagen imagenEstado" onclick="aspect()" style="background-image: url('img/aspect3D.png');" align="center">
+				<h1 id="laspect" style="position:relative; padding:0px; opacity: 0.5; cursor: pointer; color:white; font-family: 'Audiowide'; font-size: 40px; margin:0px; ">0</h1>
 			</div>
-
-			<input class="imagen" type="image" style="" src="img/salzuela.png" onclick="alterna_modo_de_pantalla()">
+			
+			<input class="imagen imagenEstado" type="image" style="" src="img/salzuela.png" onclick="alterna_modo_de_pantalla()">
 		</div>
 
-		<div id="divEstado" class="estado">
+		<div id="divEstado" class="estado" align="center">
 			<div id="token" class="texto" style="display:inline-block; margin-left:20px"></div>
-			<div id="canal" class="texto" style="display:inline-block; width:60%; margin-left:20px" align="center"></div>
-			<div id="reloj" class="texto" style="display:inline-block; margin-left:15px"></div>
+			<div id="canal" class="texto" style="width:60%; display:inline-block; " align="center"></div>
+			<div id="reloj" class="texto" style="display:inline-block; margin-left:20px"></div>
 		</div>		
 
 <!--
