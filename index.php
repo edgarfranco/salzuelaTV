@@ -796,7 +796,7 @@
 		</div>
 
 
-		<div id="divEstado" class="estado" >
+		<div id="divEstado" class="estado" >			
 			<span class="texto" id="token" style="float:left;"> </span>
 			<span class="texto" id="reloj" style="float:right;"> </span>
 			<span class="texto" id="canal" style="margin:auto; display:table;">Canal</span>
