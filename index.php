@@ -832,7 +832,7 @@
 	<div id="divMain" class="divinvisible" style="margin:0; padding:0; text-align: left; background-color: rgba(0, 0, 0, 0.2); overflow-y: scroll; position: absolute; z-index: 2; top: 0px; left: 0px; right: 0px; bottom: 0px; visibility: hidden;" onclick="menu('hidden')">
 		<br>
 		<h1 id="hFuente" class="texto" style="margin-bottom:0; margin-top:0; text-align:center; display:inline-block;" onclick="fuenteTV()">
-			Fuente Preferida: 1
+			Fte Preferida: 1
 		</h1>
 		<hr class="linea">
 		
