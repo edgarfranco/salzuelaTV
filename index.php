@@ -4,11 +4,6 @@
 	<meta http-equiv="content-language" content="es-LA">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 
-	<meta http-equiv="Expires" content="0">
-	<meta http-equiv="Last-Modified" content="0">
-	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
-	<meta http-equiv="Pragma" content="no-cache">
-
 	<link rel="shortcut icon" href="salzuela.ico">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -41,11 +36,15 @@
 //			background-position: center , center;
 //			background-repeat: no-repeat , repeat-y;
 			background-image: url("img/salzuela2.png"); 
-			background-size: 10%;
+//			background-size: 10%;
 			background-position: center;
 			background-repeat: no-repeat;
 			color: #2187bb ; 
 			color: white ; 
+			width: 100%;
+			height: 100%;
+			margin:0;
+			padding:0;
 		}
 
 		.divisible {
@@ -94,6 +93,12 @@
 		.imagenEstado{
 			width: 60px;
 			height: 60px;
+			opacity: 0.5;
+		}
+		.imagenEstado:hover {
+			width: 60px;
+			height: 60px;
+			opacity: 1;
 		}
 		
 		.imagenTV {
@@ -112,20 +117,22 @@
 		}
 		
 		.frame {
+			position: fixed;
+			bottom: 100px;
 			opacity: 0.0;
 			cursor: pointer;
 			box-shadow: 0px 0px 20px 5px #000 inset;
 			display:inline-block;
-			border-radius: 10px;
+			border-radius: 50px;
 		}
 		.frame:hover {
 			opacity: 0.7;
-			background-color: #2187bb;
+			background-color: #FFFFFF; //2187bb
 		}
 
 		.estado{
 			position: fixed;
-			bottom:0;
+			bottom: 0px;
 			width:100%;
 			height:50px;
 			background-color: #000000;
@@ -133,13 +140,17 @@
 			cursor: pointer;
 			//box-shadow: 0px 15px 20px 5px #000000 inset;
 			//box-shadow: 0px 10px 25px 15px #000000;
-			border-radius: 10px;
+			//border-radius: 10px;
+		}
+		.estado:hover{
+			opacity: 0.9;
 		}
 		
 		.control{
 			bottom:50px;
 			height:50px;
 			box-shadow: 0px -10px 15px 5px #000000;
+			opacity: 0.7;
 		}
 
 		.falla {
@@ -334,82 +345,87 @@
 
 
 		var canales = []
-		//canales[]={nombre:'',  src:'',    fuente1:'',       opcion1:1, fuente2:'', opcion2:1}
-		canales[1] ={nombre:'FOX Action',       src:'img/FOXACTION.jpg',    fuente1:'FOXACTION_HD',          opcion1:1, fuente2:'2722', opcion2:1}
-		canales[2] ={nombre:'FOX Cinema',       src:'img/FOXCINEMA.jpg',    fuente1:'FOX_CINEMA_HD_SUB',     opcion1:1, fuente2:'2580', opcion2:1}
-		canales[3] ={nombre:'FOX Classics',     src:'img/FOXCLASSICS.jpg',  fuente1:'FOX_CLASSICS_HD',       opcion1:1, fuente2:'2581', opcion2:1}
-		canales[4] ={nombre:'FOX Comedy',       src:'img/FOXCOMEDY.jpg',    fuente1:'FOX_COMEDY_HD',         opcion1:1, fuente2:'2611', opcion2:1}
-		canales[5] ={nombre:'FOX Family',       src:'img/FOXFAMILY.jpg',    fuente1:'FOXFAMILY_HD',          opcion1:1, fuente2:'2723', opcion2:1}
-		canales[6] ={nombre:'FOX Movies',       src:'img/FOXMOVIES.jpg',    fuente1:'FOXMOVIES_HD',          opcion1:1, fuente2:'2724', opcion2:1}
-		canales[7] ={nombre:'FOX Series',       src:'img/FOXSERIES.jpg',    fuente1:'FOX1_HD_SUB',           opcion1:1, fuente2:'',     opcion2:1}
-		canales[8] ={nombre:'HBO',              src:'img/HBO.jpg',          fuente1:'HBO_HD_SUB',            opcion1:1, fuente2:'2727', opcion2:1}
-		canales[9] ={nombre:'HBO 2',            src:'img/HBO2.jpg',         fuente1:'HBO_2_HD',              opcion1:1, fuente2:'2764', opcion2:1}
-		canales[10]={nombre:'HBO Family',       src:'img/HBOFAMILY.jpg',    fuente1:'HBO_FAMILY_HD',         opcion1:1, fuente2:'2594', opcion2:1}
-		canales[11]={nombre:'HBO Plus',         src:'img/HBOPLUS.jpg',      fuente1:'HBO_PLUS_HD',           opcion1:1, fuente2:'2626', opcion2:1}
-		canales[12]={nombre:'HBO Signature',    src:'img/HBOSIGNATURE.jpg', fuente1:'HBO_SIGNATURE_HD',      opcion1:1, fuente2:'2744', opcion2:1}
-		canales[13]={nombre:'MAX',              src:'img/MAX.jpg',          fuente1:'',                      opcion1:1, fuente2:'2353', opcion2:1}
-		canales[14]={nombre:'MAX Prime',        src:'img/MAXPRIME.jpg',     fuente1:'MAX_PRIME_HD',          opcion1:1, fuente2:'http://161.0.157.9/PLTV/88888888/224/3221226834/index.m3u8', opcion2:1}
-		canales[15]={nombre:'MAX Up',           src:'img/MAXUP.jpg',        fuente1:'',                      opcion1:1, fuente2:'2765', opcion2:1}
-		canales[16]={nombre:'AMC',              src:'img/AMC.jpg',          fuente1:'AMC_HD',                opcion1:1, fuente2:'2736', opcion2:1}
-		canales[17]={nombre:'AXN',              src:'img/AXN.jpg',          fuente1:'AXN_HD',                opcion1:1, fuente2:'2761', opcion2:1}
-		canales[18]={nombre:'Cinecanal',        src:'img/CINECANAL.png',    fuente1:'CINECANAL_HD',          opcion1:1, fuente2:'2577', opcion2:1}
-		canales[19]={nombre:'Cinemax',          src:'img/CINEMAX.png',      fuente1:'CINEMAX',               opcion1:1, fuente2:'2760', opcion2:1}
-		canales[20]={nombre:'Comedy Central',   src:'img/COMEDY.jpg',       fuente1:'COMEDY_CENTRAL_HD',     opcion1:1, fuente2:'2735', opcion2:1}
-		canales[21]={nombre:'DHE',              src:'img/DHE.png',          fuente1:'DHE_HD',                opcion1:1, fuente2:'2612', opcion2:1}
-		canales[22]={nombre:'Cinema 24/7',      src:'img/DTVCINEMA.png',    fuente1:'',                      opcion1:1, fuente2:'1124', opcion2:1}
-		canales[23]={nombre:'FOX',              src:'img/FOX.jpg',          fuente1:'FOXMX_HD',              opcion1:1, fuente2:'2745', opcion2:1}
-		canales[24]={nombre:'FOX Life',         src:'img/FOXLIFE.png',      fuente1:'FOX_LIFE_HD',           opcion1:1, fuente2:'2585', opcion2:1}
-		canales[25]={nombre:'FXM',              src:'img/FXM.jpg',          fuente1:'FXMMX_HD',              opcion1:1, fuente2:'2713', opcion2:1}
-		canales[26]={nombre:'FX',               src:'img/FX.jpg',           fuente1:'FX_HD',                 opcion1:1, fuente2:'2593', opcion2:1}
-		canales[27]={nombre:'Golden Plus',      src:'img/GOLDEN+.jpg',      fuente1:'GOLDEN_HD',             opcion1:1, fuente2:'2599', opcion2:1}
-		canales[28]={nombre:'Golden Premiere',  src:'img/GOLDENEDGE.jpg',   fuente1:'GOLDEN_PREMIER_HD',     opcion1:1, fuente2:'2598', opcion2:1}
-		canales[29]={nombre:'Multipremiere',    src:'img/MULTIPREMIER.png', fuente1:'MULTIPREMIER',          opcion1:1, fuente2:'2754', opcion2:1}
-		canales[30]={nombre:'Paramount',        src:'img/PARAMOUNT.png',    fuente1:'PARAMOUNT_HD',          opcion1:1, fuente2:'2741', opcion2:1}
-		canales[31]={nombre:'Sony',             src:'img/SONY.jpg',         fuente1:'SONY_HD',               opcion1:1, fuente2:'2757', opcion2:1}
-		canales[32]={nombre:'Studio Universal', src:'img/STUDIO.jpg',       fuente1:'STUDIO_UNIVERSAL',      opcion1:1, fuente2:'', opcion2:1}
-		canales[33]={nombre:'Space',            src:'img/SPACE.jpg',        fuente1:'SPACE_HD',              opcion1:1, fuente2:'2614', opcion2:1}
-		canales[34]={nombre:'Sundance',         src:'img/SUNDANCE.jpg',     fuente1:'SUNDANCE_HD',           opcion1:1, fuente2:'2573', opcion2:1}
-		canales[35]={nombre:'SyFy',             src:'img/SYFY.jpg',         fuente1:'',                      opcion1:1, fuente2:'2090', opcion2:1}
-		canales[36]={nombre:'TBS',              src:'img/TBS.jpg',          fuente1:'',                      opcion1:1, fuente2:'2630', opcion2:1}
-		canales[37]={nombre:'TCM',              src:'img/TCM.png',          fuente1:'TCM',                   opcion1:1, fuente2:'2762', opcion2:1}
-		canales[38]={nombre:'TLC',              src:'img/TLC.png',          fuente1:'TLC',                   opcion1:1, fuente2:'2690', opcion2:1}
-		canales[39]={nombre:'TNT',              src:'img/TNT.jpg',          fuente1:'TNT_HD',                opcion1:1, fuente2:'2592', opcion2:1}
-		canales[40]={nombre:'TNT Series',       src:'img/TNTSERIES.jpg',    fuente1:'TNT_SERIES_HD',         opcion1:1, fuente2:'2591', opcion2:1}
-		canales[41]={nombre:'Universal Channel',src:'img/UNIVERSAL.png',    fuente1:'UNIVERSAL_CHANNEL_HD',  opcion1:1, fuente2:'2759', opcion2:1}
-		canales[42]={nombre:'Warner Channel',   src:'img/WARNER.png',       fuente1:'WARNER_HD',             opcion1:1, fuente2:'2583', opcion2:1}
-		canales[43]={nombre:'Classiques',       src:'img/CLASSIQUES.jpg',   fuente1:'http://45.43.208.2:1935/classique/classique/live.m3u8', opcion1:1, fuente2:'', opcion2:1}
-		canales[44]={nombre:'Pelicula',         src:'img/CINE.png',         fuente1:'http://www.youtube.com/embed/XT3voFvVEcI',         opcion1:1, fuente2:'', opcion2:1}
-		canales[45]={nombre:'A&amp;E',          src:'img/AE.png',           fuente1:'AE_MUNDO_HD',           opcion1:1, fuente2:'2620', opcion2:1}
-		canales[46]={nombre:'Animal Planet',    src:'img/ANIMALPLANET.png', fuente1:'ANIMAL_PLANET_HD',      opcion1:1, fuente2:'2739', opcion2:1}
-		canales[47]={nombre:'Discovery Channel',src:'img/DISCOVERY.jpg',    fuente1:'DISCOVERY_CHANNEL_HD',  opcion1:1, fuente2:'2770', opcion2:1}
-		canales[48]={nombre:'Discovery Civ',    src:'img/DISCIV.jpg',       fuente1:'DISCOVERY_CIVILIZATION',opcion1:1, fuente2:'',     opcion2:1}
-		canales[49]={nombre:'E!',               src:'img/E.jpg',            fuente1:'E',                     opcion1:1, fuente2:'2756', opcion2:1}
-		canales[50]={nombre:'History Channel',  src:'img/HISTORY.jpg',      fuente1:'HISTORY_CHANNEL_HD',    opcion1:1, fuente2:'2669', opcion2:1}
-		canales[51]={nombre:'H2',               src:'img/H2.png',           fuente1:'H2',                    opcion1:1, fuente2:'2772', opcion2:1}
-		canales[52]={nombre:'ID',               src:'img/ID.jpg',           fuente1:'ID_HD',                 opcion1:1, fuente2:'2709', opcion2:1}
-		canales[53]={nombre:'NatGeo',           src:'img/NATIONALGEO.jpg',  fuente1:'NATGEO_HD',             opcion1:1, fuente2:'2678', opcion2:1}
-		canales[54]={nombre:'NatGeo Wild',      src:'img/NATGEOWILD.png',   fuente1:'NATGEO_WILD_HD',        opcion1:1, fuente2:'2584', opcion2:1}
-		canales[55]={nombre:'True TV',          src:'img/TRUETV.png',       fuente1:'TRU_TV_HD',             opcion1:1, fuente2:'2720', opcion2:1}
-		canales[56]={nombre:'TLC',              src:'img/TLC.png',          fuente1:'TLC',                   opcion1:1, fuente2:'2690', opcion2:1}
-		canales[57]={nombre:'Azteca',           src:'img/AZTECA.png',       fuente1:'',                      opcion1:1, fuente2:'808', opcion2:1}
-		canales[58]={nombre:'Canal 1',          src:'img/CANAL1.png',       fuente1:'CANAL_UNO_HD',          opcion1:1, fuente2:'', opcion2:1}
-		canales[59]={nombre:'Caracol',          src:'img/CARACOL.png',      fuente1:'CARACOL',               opcion1:1, fuente2:'2721', opcion2:1}
-		canales[60]={nombre:'De Pelicula',      src:'img/DEPELICULA.png',   fuente1:'DEPELICULA',            opcion1:1, fuente2:'2686', opcion2:1}
-		canales[61]={nombre:'Canal de las Estrellas',src:'img/ESTRELLAS.jpg',fuente1:'CANAL_DE_LAS_ESTRELLAS',opcion1:1, fuente2:'2750', opcion2:1}
-		canales[62]={nombre:'Glitz',            src:'img/GLITZ.png',        fuente1:'GLITZ',                 opcion1:1, fuente2:'2689', opcion2:1}
-		canales[63]={nombre:'RCN',              src:'img/RCN.png',          fuente1:'',                      opcion1:1, fuente2:'1778', opcion2:1}
-		canales[64]={nombre:'Telemundo',        src:'img/TELEMUNDO.png',    fuente1:'TELEMUNDO',             opcion1:1, fuente2:'2691', opcion2:1}
-		canales[65]={nombre:'Venevision Plus',  src:'img/VE+.jpg',          fuente1:'VEPLUSTV',              opcion1:1, fuente2:'2621', opcion2:1}
-		canales[66]={nombre:'Boomerang',        src:'img/BOOMERANG.png',    fuente1:'BOOMERANG',             opcion1:1, fuente2:'2775', opcion2:1}
-		canales[67]={nombre:'Cartoon Network',  src:'img/CARTOON.png',      fuente1:'CARTOON_NETWORK_HD',    opcion1:1, fuente2:'2587', opcion2:1}
-		canales[68]={nombre:'Disney',           src:'img/DISNEY_HD.png',    fuente1:'',                      opcion1:1, fuente2:'2619', opcion2:1}
-		canales[69]={nombre:'Disney XD',        src:'img/DISNEY_XD.png',    fuente1:'DISNEY_XD',             opcion1:1, fuente2:'2590', opcion2:1}
-		canales[70]={nombre:'Disney Jr',        src:'img/DISNEYJR.png',     fuente1:'DISNEY_JR',             opcion1:1, fuente2:'2623', opcion2:1}
-		canales[71]={nombre:'Nickelodeon Jr',   src:'img/NICK_JR_HD.png',   fuente1:'NICK_JR_HD',            opcion1:1, fuente2:'2766', opcion2:1}
-		canales[72]={nombre:'Nickelodeon',      src:'img/NICKELODEON_HD.png',fuente1:'NICKELODEON_HD',       opcion1:1, fuente2:'2596', opcion2:1}
-		canales[73]={nombre:'Nick 2',           src:'img/NICKTOONS.png',    fuente1:'NICK_2_HD',             opcion1:1, fuente2:'', opcion2:1}
-		canales[74]={nombre:'ToonCast',         src:'img/TOONCAST.png',     fuente1:'TOONCAST',              opcion1:1, fuente2:'', opcion2:1}
+		canales[0]={nombre:'',  src:'',    fuente1:'',       opcion1:1, fuente2:'', opcion2:1}
+		canales.push({nombre:'FOX Action',       src:'img/FOXACTION.jpg',    fuente1:'FOXACTION_HD',          opcion1:1, fuente2:'2722', opcion2:1})
+		canales.push({nombre:'FOX Cinema',       src:'img/FOXCINEMA.jpg',    fuente1:'FOX_CINEMA_HD_SUB',     opcion1:1, fuente2:'2580', opcion2:1})
+		canales.push({nombre:'FOX Classics',     src:'img/FOXCLASSICS.jpg',  fuente1:'FOX_CLASSICS_HD',       opcion1:1, fuente2:'2581', opcion2:1})
+		canales.push({nombre:'FOX Comedy',       src:'img/FOXCOMEDY.jpg',    fuente1:'FOX_COMEDY_HD',         opcion1:1, fuente2:'2611', opcion2:1})
+		canales.push({nombre:'FOX Family',       src:'img/FOXFAMILY.jpg',    fuente1:'FOXFAMILY_HD',          opcion1:1, fuente2:'2723', opcion2:1})
+		canales.push({nombre:'FOX Movies',       src:'img/FOXMOVIES.jpg',    fuente1:'FOXMOVIES_HD',          opcion1:1, fuente2:'2724', opcion2:1})
+		canales.push({nombre:'FOX Series',       src:'img/FOXSERIES.jpg',    fuente1:'FOX1_HD_SUB',           opcion1:1, fuente2:'',     opcion2:1})
+		canales.push({nombre:'HBO',              src:'img/HBO.jpg',          fuente1:'HBO_HD_SUB',            opcion1:1, fuente2:'2727', opcion2:1})
+		canales.push({nombre:'HBO 2',            src:'img/HBO2.jpg',         fuente1:'HBO_2_HD',              opcion1:1, fuente2:'2764', opcion2:1})
+		canales.push({nombre:'HBO Family',       src:'img/HBOFAMILY.jpg',    fuente1:'HBO_FAMILY_HD',         opcion1:1, fuente2:'2594', opcion2:1})
+		canales.push({nombre:'HBO Plus',         src:'img/HBOPLUS.jpg',      fuente1:'HBO_PLUS_HD',           opcion1:1, fuente2:'2626', opcion2:1})
+		canales.push({nombre:'HBO Signature',    src:'img/HBOSIGNATURE.jpg', fuente1:'HBO_SIGNATURE_HD',      opcion1:1, fuente2:'2744', opcion2:1})
+		canales.push({nombre:'MAX',              src:'img/MAX.jpg',          fuente1:'',                      opcion1:1, fuente2:'2353', opcion2:1})
+		canales.push({nombre:'MAX Prime',        src:'img/MAXPRIME.jpg',     fuente1:'MAX_PRIME_HD',          opcion1:1, fuente2:'http://161.0.157.9/PLTV/88888888/224/3221226834/index.m3u8', opcion2:1})
+		canales.push({nombre:'MAX Up',           src:'img/MAXUP.jpg',        fuente1:'',                      opcion1:1, fuente2:'2765', opcion2:1})
 
+		canales.push({nombre:'AMC',              src:'img/AMC.jpg',          fuente1:'AMC_HD',                opcion1:1, fuente2:'2736', opcion2:1})
+		canales.push({nombre:'AXN',              src:'img/AXN.jpg',          fuente1:'AXN_HD',                opcion1:1, fuente2:'2761', opcion2:1})
+		canales.push({nombre:'Cinecanal',        src:'img/CINECANAL.png',    fuente1:'CINECANAL_HD',          opcion1:1, fuente2:'2577', opcion2:1})
+		canales.push({nombre:'Cinemax',          src:'img/CINEMAX.png',      fuente1:'CINEMAX',               opcion1:1, fuente2:'2760', opcion2:1})
+		canales.push({nombre:'Comedy Central',   src:'img/COMEDY.jpg',       fuente1:'COMEDY_CENTRAL_HD',     opcion1:1, fuente2:'2735', opcion2:1})
+		canales.push({nombre:'DHE',              src:'img/DHE.png',          fuente1:'DHE_HD',                opcion1:1, fuente2:'2612', opcion2:1})
+		canales.push({nombre:'Cinema 24/7',      src:'img/DTVCINEMA.png',    fuente1:'',                      opcion1:1, fuente2:'1124', opcion2:1})
+		canales.push({nombre:'FOX',              src:'img/FOX.jpg',          fuente1:'FOXMX_HD',              opcion1:1, fuente2:'2745', opcion2:1})
+		canales.push({nombre:'FOX Life',         src:'img/FOXLIFE.png',      fuente1:'FOX_LIFE_HD',           opcion1:1, fuente2:'2585', opcion2:1})
+		canales.push({nombre:'FXM',              src:'img/FXM.jpg',          fuente1:'FXMMX_HD',              opcion1:1, fuente2:'2713', opcion2:1})
+		canales.push({nombre:'FX',               src:'img/FX.jpg',           fuente1:'FX_HD',                 opcion1:1, fuente2:'2593', opcion2:1})
+		canales.push({nombre:'Golden Plus',      src:'img/GOLDEN+.jpg',      fuente1:'GOLDEN_HD',             opcion1:1, fuente2:'2599', opcion2:1})
+		canales.push({nombre:'Golden Premiere',  src:'img/GOLDENEDGE.jpg',   fuente1:'GOLDEN_PREMIER_HD',     opcion1:1, fuente2:'2598', opcion2:1})
+		canales.push({nombre:'Multipremiere',    src:'img/MULTIPREMIER.png', fuente1:'MULTIPREMIER',          opcion1:1, fuente2:'2754', opcion2:1})
+		canales.push({nombre:'Paramount',        src:'img/PARAMOUNT.png',    fuente1:'PARAMOUNT_HD',          opcion1:1, fuente2:'2741', opcion2:1})
+		canales.push({nombre:'Sony',             src:'img/SONY.jpg',         fuente1:'SONY_HD',               opcion1:1, fuente2:'2757', opcion2:1})
+		canales.push({nombre:'Studio Universal', src:'img/STUDIO.jpg',       fuente1:'STUDIO_UNIVERSAL',      opcion1:1, fuente2:'', opcion2:1})
+		canales.push({nombre:'Space',            src:'img/SPACE.jpg',        fuente1:'SPACE_HD',              opcion1:1, fuente2:'2614', opcion2:1})
+		canales.push({nombre:'Sundance',         src:'img/SUNDANCE.jpg',     fuente1:'SUNDANCE_HD',           opcion1:1, fuente2:'2573', opcion2:1})
+		canales.push({nombre:'SyFy',             src:'img/SYFY.jpg',         fuente1:'syfy',                  opcion1:2, fuente2:'2090', opcion2:1})
+		canales.push({nombre:'TBS',              src:'img/TBS.jpg',          fuente1:'',                      opcion1:1, fuente2:'2630', opcion2:1})
+		canales.push({nombre:'TCM',              src:'img/TCM.png',          fuente1:'TCM',                   opcion1:1, fuente2:'2762', opcion2:1})
+		canales.push({nombre:'TLC',              src:'img/TLC.png',          fuente1:'TLC',                   opcion1:1, fuente2:'2690', opcion2:1})
+		canales.push({nombre:'TNT',              src:'img/TNT.jpg',          fuente1:'TNT_HD',                opcion1:1, fuente2:'2592', opcion2:1})
+		canales.push({nombre:'TNT Series',       src:'img/TNTSERIES.jpg',    fuente1:'TNT_SERIES_HD',         opcion1:1, fuente2:'2591', opcion2:1})
+		canales.push({nombre:'Universal Channel',src:'img/UNIVERSAL.png',    fuente1:'UNIVERSAL_CHANNEL_HD',  opcion1:1, fuente2:'2759', opcion2:1})
+		canales.push({nombre:'Warner Channel',   src:'img/WARNER.png',       fuente1:'WARNER_HD',             opcion1:1, fuente2:'2583', opcion2:1})
+		canales.push({nombre:'Classiques',       src:'img/CLASSIQUES.jpg',   fuente1:'http://45.43.208.2:1935/classique/classique/live.m3u8', opcion1:1, fuente2:'', opcion2:1})
+		canales.push({nombre:'Pelicula',         src:'img/CINE.png',         fuente1:'http://tv.salzuela.tk/tv.mp4',         opcion1:1, fuente2:'', opcion2:1})
+
+		canales.push({nombre:'A&amp;E',          src:'img/AE.png',           fuente1:'AE_MUNDO_HD',           opcion1:1, fuente2:'2620', opcion2:1})
+		canales.push({nombre:'Animal Planet',    src:'img/ANIMALPLANET.png', fuente1:'ANIMAL_PLANET_HD',      opcion1:1, fuente2:'2739', opcion2:1})
+		canales.push({nombre:'Discovery Channel',src:'img/DISCOVERY.jpg',    fuente1:'DISCOVERY_CHANNEL_HD',  opcion1:1, fuente2:'2770', opcion2:1})
+		canales.push({nombre:'Discovery Civ',    src:'img/DISCIV.jpg',       fuente1:'DISCOVERY_CIVILIZATION',opcion1:1, fuente2:'',     opcion2:1})
+		canales.push({nombre:'E!',               src:'img/E.jpg',            fuente1:'E',                     opcion1:1, fuente2:'2756', opcion2:1})
+		canales.push({nombre:'History Channel',  src:'img/HISTORY.jpg',      fuente1:'HISTORY_CHANNEL_HD',    opcion1:1, fuente2:'2669', opcion2:1})
+		canales.push({nombre:'H2',               src:'img/H2.png',           fuente1:'H2',                    opcion1:1, fuente2:'2772', opcion2:1})
+		canales.push({nombre:'ID',               src:'img/ID.jpg',           fuente1:'ID_HD',                 opcion1:1, fuente2:'2709', opcion2:1})
+		canales.push({nombre:'NatGeo',           src:'img/NATIONALGEO.jpg',  fuente1:'NATGEO_HD',             opcion1:1, fuente2:'2678', opcion2:1})
+		canales.push({nombre:'NatGeo Wild',      src:'img/NATGEOWILD.png',   fuente1:'NATGEO_WILD_HD',        opcion1:1, fuente2:'2584', opcion2:1})
+		canales.push({nombre:'True TV',          src:'img/TRUETV.png',       fuente1:'TRU_TV_HD',             opcion1:1, fuente2:'2720', opcion2:1})
+		canales.push({nombre:'TLC',              src:'img/TLC.png',          fuente1:'TLC',                   opcion1:1, fuente2:'2690', opcion2:1})
+
+		canales.push({nombre:'Azteca',           src:'img/AZTECA.png',       fuente1:'',                      opcion1:1, fuente2:'808', opcion2:1})
+		canales.push({nombre:'Canal 1',          src:'img/CANAL1.png',       fuente1:'CANAL_UNO_HD',          opcion1:1, fuente2:'', opcion2:1})
+		canales.push({nombre:'Caracol',          src:'img/CARACOL.png',      fuente1:'CARACOL',               opcion1:1, fuente2:'2721', opcion2:1})
+		canales.push({nombre:'De Pelicula',      src:'img/DEPELICULA.png',   fuente1:'DEPELICULA',            opcion1:1, fuente2:'2686', opcion2:1})
+		canales.push({nombre:'Canal de las Estrellas',src:'img/ESTRELLAS.jpg',fuente1:'CANAL_DE_LAS_ESTRELLAS',opcion1:1, fuente2:'2750', opcion2:1})
+		canales.push({nombre:'Glitz',            src:'img/GLITZ.png',        fuente1:'GLITZ',                 opcion1:1, fuente2:'2689', opcion2:1})
+		canales.push({nombre:'RCN',              src:'img/RCN.png',          fuente1:'',                      opcion1:1, fuente2:'1778', opcion2:1})
+		canales.push({nombre:'Telemundo',        src:'img/TELEMUNDO.png',    fuente1:'TELEMUNDO',             opcion1:1, fuente2:'2691', opcion2:1})
+		canales.push({nombre:'Venevision Plus',  src:'img/VE+.jpg',          fuente1:'VEPLUSTV',              opcion1:1, fuente2:'2621', opcion2:1})
+
+		canales.push({nombre:'Boomerang',        src:'img/BOOMERANG.png',    fuente1:'BOOMERANG',             opcion1:1, fuente2:'2775', opcion2:1})
+		canales.push({nombre:'Cartoon Network',  src:'img/CARTOON.png',      fuente1:'CARTOON_NETWORK_HD',    opcion1:1, fuente2:'2587', opcion2:1})
+		canales.push({nombre:'Disney',           src:'img/DISNEY_HD.png',    fuente1:'',                      opcion1:1, fuente2:'2619', opcion2:1})
+		canales.push({nombre:'Disney XD',        src:'img/DISNEY_XD.png',    fuente1:'DISNEY_XD',             opcion1:1, fuente2:'2590', opcion2:1})
+		canales.push({nombre:'Disney Jr',        src:'img/DISNEYJR.png',     fuente1:'DISNEY_JR',             opcion1:1, fuente2:'2623', opcion2:1})
+		canales.push({nombre:'Nickelodeon Jr',   src:'img/NICK_JR_HD.png',   fuente1:'NICK_JR_HD',            opcion1:1, fuente2:'2766', opcion2:1})
+		canales.push({nombre:'Nickelodeon',      src:'img/NICKELODEON_HD.png',fuente1:'NICKELODEON_HD',       opcion1:1, fuente2:'2596', opcion2:1})
+		canales.push({nombre:'Nick 2',           src:'img/NICKTOONS.png',    fuente1:'NICK_2_HD',             opcion1:1, fuente2:'', opcion2:1})
+		canales.push({nombre:'ToonCast',         src:'img/TOONCAST.png',     fuente1:'TOONCAST',              opcion1:1, fuente2:'', opcion2:1})
+
+		var canalMax = canales.length-1
 
 		function docCanales(){
 			for(i=1; i<canales.length; i++){
@@ -426,11 +442,12 @@
 				if(i===44){document.getElementById("divCanales").innerHTML += "<hr class='linea'>"}
 				if(i===56){document.getElementById("divCanales").innerHTML += "<hr class='linea'>"}
 				if(i===65){document.getElementById("divCanales").innerHTML += "<hr class='linea'>"}
-			}			
+			}
+			document.getElementById("divCanales").innerHTML += "<br><br><br><br><br><br><br><br>"
 		}
 		
 		function play(id) {
-			
+
 			caption = canales[id].nombre
 			f1 = canales[id].fuente1
 			l1 = canales[id].opcion1
@@ -495,9 +512,17 @@
 							//	Colombia playlist.m3u8
 							//	http://free.iptvcanales.com/view/kr/AE_MUNDO_HD/playlist.m3u8
 							//  http://free.iptvcanales.com/web/kr/AMC_HD/playlist.m3u8 // enlace desde la web
-							//urlBase = "http://free.iptvcanales.com/web/"
+					urlBase = "http://free.iptvcanales.com/web/"
 							url = urlBase + "kr/" + f1 + "/playlist.m3u8"
-							break;
+							break;							
+						case 2:
+							//	Colombia playlist.m3u8
+							//	http://free.iptvcanales.com/view/kr/AE_MUNDO_HD/playlist.m3u8
+							//  http://free.iptvcanales.com/web/kr/AMC_HD/playlist.m3u8 // enlace desde la web
+							// http://free.iptvcanales.com/web/spain/live/syfy/playlist.m3u8
+							urlBase = "http://free.iptvcanales.com/web/spain/live/"							   
+							url = urlBase + f1 + "/playlist.m3u8"
+							break;							
 						default:
 							console.log("Switch Case L1 ERROR...")
 							url = "ERROR"
@@ -572,10 +597,12 @@
 				document.getElementById("divVideo2").style.visibility = "visible"
 				document.getElementById("iVideo2").src = "chrome-extension://emnphkkblegpebimobpbekeedfgemhof/player.html#" + url
 				//document.getElementById("iVideo2").src = "chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#" + url				
-			}else{
+				//document.getElementById("iVideo2").src = "chrome-extension://cjfbmleiaobegagekpmlhmaadepdeedn/index.html#" + url				
+			}else{				
 				document.getElementById("divVideo1").style.visibility = "visible"				
 				document.getElementById("video1").src = url
-				video1.play()		// Smart TV
+				
+				video1.play()		// Smart TV				
 			}			
 		}
 		
@@ -610,15 +637,15 @@
 
 		function stop(){
 			console.log("stop")
-			document.getElementById("video1").src=null
-			document.getElementById("iVideo2").src=null
+			document.getElementById("video1").src=""
+			document.getElementById("iVideo2").src=""
 			
 			if(canal!=0) {
 				if(document.getElementById("pStop").src=="http://tv.salzuela.tk/img/stop3D.png") {
 					document.getElementById("pStop").src="http://tv.salzuela.tk/img/play3D.png"
 				}else{
 					document.getElementById("pStop").src="http://tv.salzuela.tk/img/stop3D.png"
-					document.getElementsByTagName("img")[canal].click()
+//					document.getElementsByTagName("img")[canal].click()
 					console.log(canal)
 				}
 			}
@@ -666,16 +693,19 @@
 					break
 			}
 
-			document.getElementById("laspect").innerHTML = aspecto;
+			document.getElementById("laspect").innerHTML = aspecto;			
 		}
 
 		function reloj(){
-			var n = new Date().toLocaleString();
+			var options = { weekday:'short', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'};
+			var n = new Date().toLocaleString('es-VE',options)
+			console.log(n)
+			n = n.replace(" p. m.", "")
+			n = n.replace(" a. m.", "")
 			document.getElementById("reloj").innerHTML = n
-
 			//document.getElementById("token").innerHTML = Token2
 		}
-		updatereloj = setInterval(reloj, 1000)
+		updatereloj = setInterval(reloj, 30000)
 		
 		function iptv(){
 			console.log("iptv")
@@ -689,7 +719,10 @@
 		function iptvStatus(){
 		  console.log("iptvStatus")
 		  document.getElementById('frameiptv').src = ''
-		  document.getElementById('frameiptv').src = 'http://free.iptvcanales.com/view/activacion_1.php'
+		  iptvFrame.onload = function() { document.getElementById('frameiptv').opacity = 1 };
+		  document.getElementById('frameiptv').src = 'https://iptvcanales.com/' //'http://free.iptvcanales.com/view/activacion_1.php'
+//return false
+  	      //event.preventDefault()
 		}
 
 		function iptvActivar(){
@@ -749,13 +782,14 @@
 
 		function init() {
 			console.log("Init")
+			reloj()
 			docCanales()
 			getToken2()
 			//onLoad1()
 			divLoad.style.visibility = "hidden"
 			menu("visible")
 		}
-		
+
 		function keyPress() {
 			console.log("keyPress")
 		}
@@ -776,35 +810,35 @@
 	</script> 
 </head>
 
-<body onmousemove="onmove()" onload="init()" background="LogoSalzuelaBlogV3.png" style="cursor: none;" > 
-
 	<div id="divLoad" style="visibility: hidden; position: absolute; z-index: initial; top: 45%; margin-left: auto; margin-right: auto; left: 0px; right: 0px;">
 		<img src="loading3.gif" width="50px" height="50px" style="position: absolute; margin-left:auto; margin-right:auto; left:0; right:0; ">
 		<p id="lCanal" class="texto" style="margin-top:60; text-align: center;">Cargando Canales...</p>
 	</div>
 
-	<div id="divVideo1" style="text-align:center; position:absolute; z-index:1; top:0; left:0; right: 0; bottom:0; opacity:1;" onclick="menu('visible')">
+	<div id="divVideo1" style="width:100%; height:100%; text-align:center; position:absolute; z-index:1; top:0; left:0; right: 0; bottom:0; opacity:1;" onclick="menu('visible')">
 		<video id="video1" style=" width:100%; height:100%; margin-right:-0%; margin-left:-0%; margin-top:-0%; overflow:hidden;" onclick="menu('visible')">
 			<source src="" type="application/x-mpegURL">
 		</video>
 	</div>
 
-	<div id="divVideo2" style="visibility:hidden; text-align:center; position:absolute; z-index:0; top:0; left:0; right: 0; bottom:0; opacity:1;" onclick="menu('visible')">
+	<div id="divVideo2" style="width:100%; height:100%; visibility:hidden; text-align:center; position:absolute; z-index:0; top:0; left:0; right: 0; bottom:0; opacity:1;" onclick="menu('visible')">
 		<iframe id="iVideo2" style="border:0; width:100%; height:100%; margin-right:-0%; margin-left:-0%; margin-top:-0%; overflow:hidden;"></iframe>
 	</div>
 
-	<div id="divMain" class="divinvisible" style="text-align: left; background-color: rgba(0, 0, 0, 0.2); overflow-y: scroll; position: absolute; z-index: 2; top: 0px; left: 0px; right: 0px; bottom: 0px; visibility: hidden;" onclick="menu('hidden')">
+
+<body onmousemove="onmove()" onload="init()" background="LogoSalzuelaBlogV3.png" style="cursor: none;" >
+
+
+	<div id="divMain" class="divinvisible" style="margin:0; padding:0; text-align: left; background-color: rgba(0, 0, 0, 0.2); overflow-y: scroll; position: absolute; z-index: 2; top: 0px; left: 0px; right: 0px; bottom: 0px; visibility: hidden;" onclick="menu('hidden')">
 		<br>
 		<h1 id="hFuente" class="texto" style="margin-bottom:0; margin-top:0; text-align:center; display:inline-block;" onclick="fuenteTV()">
 			Fuente Preferida: 1
 		</h1>
 		<hr class="linea">
 		
-		<div id="divCanales" style="display:inline-block; margin-left:15px;">
+		<div id="divCanales" style="display:inline-block; margin-left:15px; height:100%;">
 		</div>
-		
-		
-<br><br><br><br>
+
 
 		<div id="divControl" align="center" class="estado control">		
 			<div class="imagen imagenEstado" onclick="stop()" id="pStop" style="background-image: url('img/stop3D.png');"></div>		
@@ -813,8 +847,8 @@
 			<div class="imagen imagenEstado" onclick="jump()" style="background-image: url('img/jump3D.png');"></div>
 			<div class="imagen imagenEstado" onclick="update()" style="background-image: url('img/update3D.png');"></div>			
 			
-			<div class="imagen imagenEstado" onclick="aspect()" style="background-image: url('img/aspect3D.png');" align="center">
-				<h1 id="laspect" style="position:relative; padding:0px; opacity: 0.5; cursor: pointer; color:white; font-family: 'Audiowide'; font-size: 40px; margin:0px; ">0</h1>
+			<div class="imagen imagenEstado" onclick="aspect()" style="position:relative; top:-22px; margin:0px; background-image: url('img/aspect3D.png');" align="center">
+				<h1 id="laspect" style="position:relative; padding:0px; opacity: 0.5; cursor: pointer; color:white; font-family: 'Audiowide'; font-size: 30px; top:2px; margin:0px; ">0</h1>
 			</div>
 			
 			<input class="imagen imagenEstado" type="image" style="" src="img/salzuela.png" onclick="alterna_modo_de_pantalla()">
@@ -822,20 +856,14 @@
 
 		<div id="divEstado" class="estado" align="center">
 			<div id="token" class="texto" style="display:inline-block; margin-left:20px"></div>
-			<div id="canal" class="texto" style="width:60%; display:inline-block; " align="center"></div>
+			<div id="canal" class="texto" style="width:55%; display:inline-block; " align="center"></div>
 			<div id="reloj" class="texto" style="display:inline-block; margin-left:20px"></div>
-		</div>		
-
-<!--
-		<div style="display:noneXXX; overflow: hidden; margin-top: 0px; margin-left: 0px; width:55px; height:25px;">
-			<iframe src="http://iptvcanales.com/index.php/lista-de-canales/" scrolling="yes" style="height: 1500px; border: 0px none; width: 619px; margin-top: -990px; margin-left: -180px; ">
-			</iframe>
 		</div>
--->
 
-		<div class="frame">
+
+		<div class="frame" onclick="iptvStatus()">
 			<input class="" style="width:40px; height:40px;" type="image" src="img/update3D.png" onclick="iptvStatus()">
-				<iframe id="frameiptv" class="" src="http://free.iptvcanales.com/view/activacion_1.php" scrolling="no" style="display:inline-block; border:none; height: 35px;  width: 600px; background-color:#0;">
+				<iframe id="frameiptv" class="" src="https://iptvcanales.com/" scrolling="no" style="display:inline-block; border:none; height: 35px;  width: 600px; background-color:#0;">
 				</iframe>
 			<input class="" style="width:40px; height:40px;" type="image" src="img/jump3D.png" onclick="iptvActivar()">
 		</div>
@@ -843,10 +871,11 @@
 		<div id="divFrameiptv" style="display:none;">
 		</div>
 
+	</div>
+	
 		<script>
 			menu("hidden")
 		</script>
-
 
 		<div style="display:none;">
 			<hr class="linea">
@@ -874,9 +903,6 @@
 				// 
 			</script>
 		</div>
-		
-	</div>
-
  
 
 <script>
